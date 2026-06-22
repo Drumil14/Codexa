@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ink: #0b0e16;
+    --paper: #fafafb;
+    --accent: #4d5dfb;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #ffffff;
+  }
+
+  /* Visible, on-brand keyboard focus */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  /* Monospace eyebrow / data-label — the brand signature */
+  .label-mono {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-muted;
+  }
+
+  /* Faint engineering blueprint grid background */
+  .blueprint {
+    background-image:
+      linear-gradient(to right, rgba(11, 14, 22, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 14, 22, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .blueprint-dark {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Radial fade mask so the grid dissolves toward the edges */
+  .mask-fade {
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 78%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 30%, transparent 78%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #0b0e16 0%, #4d5dfb 90%);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
