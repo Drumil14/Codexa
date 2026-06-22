@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Process } from "@/components/sections/Process";
+import { Pricing } from "@/components/sections/Pricing";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -87,6 +88,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <Pricing />
       <Process />
       <ContactCTA />
     </>

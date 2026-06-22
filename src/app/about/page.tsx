@@ -4,7 +4,6 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export const metadata: Metadata = {
@@ -152,7 +151,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Testimonials />
       <ContactCTA />
     </>
   );

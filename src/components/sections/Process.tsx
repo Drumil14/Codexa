@@ -7,28 +7,48 @@ export function Process() {
     <section className="bg-white py-20 sm:py-28">
       <div className="container-x">
         <SectionHeading
-          eyebrow="how we work"
-          title="A clear path from idea to impact"
-          lead="No black boxes. Four phases, weekly visibility, and working software in your hands early."
+          eyebrow="development process"
+          title="How we take you from idea to launch"
+          lead="A clear, five-step process with no surprises. You'll always know what's happening, what's next, and where your project stands."
         />
 
-        <StaggerGroup className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
-          {PROCESS.map((step) => (
-            <StaggerItem key={step.step} className="bg-white">
-              <div className="relative flex h-full flex-col p-7">
-                <span className="font-mono text-sm text-accent-600">
-                  {step.step}
-                </span>
-                <span aria-hidden className="mt-3 block h-px w-10 bg-accent" />
-                <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                  {step.description}
-                </p>
-              </div>
-            </StaggerItem>
-          ))}
+        <StaggerGroup className="relative mx-auto mt-16 max-w-3xl">
+          {/* Vertical connector line */}
+          <span
+            aria-hidden
+            className="absolute left-[27px] top-3 bottom-3 w-px bg-line sm:left-[31px]"
+          />
+
+          <div className="space-y-10">
+            {PROCESS.map((step) => {
+              const Icon = step.icon;
+              return (
+                <StaggerItem key={step.step}>
+                  <div className="relative flex gap-5 sm:gap-7">
+                    {/* Node */}
+                    <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-line bg-white text-ink shadow-card sm:h-16 sm:w-16">
+                      <Icon className="h-6 w-6 text-accent-600" />
+                    </span>
+
+                    <div className="pt-1.5">
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-xs text-accent-600">
+                          Step {step.step}
+                        </span>
+                        <span aria-hidden className="h-px w-6 bg-line" />
+                      </div>
+                      <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </div>
         </StaggerGroup>
       </div>
     </section>

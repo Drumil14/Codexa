@@ -17,7 +17,7 @@ export function PageHeader({
     <section className="relative overflow-hidden pt-32 sm:pt-40">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 blueprint mask-fade" />
-        <div className="absolute left-1/2 top-0 h-72 w-[680px] -translate-x-1/2 rounded-full bg-accent/10 blur-[110px]" />
+        <div className="absolute left-1/2 top-0 h-72 w-[680px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[110px]" />
       </div>
       <div className="container-x">
         <div className="max-w-3xl">

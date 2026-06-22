@@ -12,9 +12,9 @@ export function PortfolioShowcase() {
       <div className="container-x">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
-            eyebrow="selected work"
-            title="Outcomes, not just deliverables"
-            lead="A few recent projects and the measurable impact they had on the business behind them."
+            eyebrow="recent projects"
+            title="Recent projects and the results behind them"
+            lead="A few recent builds and the measurable impact they had on the businesses behind them."
           />
           <Link
             href="/portfolio"

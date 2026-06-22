@@ -9,18 +9,18 @@ export function WhyChoose() {
       <div className="container-x relative">
         <div className="max-w-2xl">
           <Reveal>
-            <Eyebrow dark>why codexa</Eyebrow>
+            <Eyebrow dark>why choose codexa</Eyebrow>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-              A studio that treats your codebase like its own
+              Why businesses choose Codexa
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-5 text-lg text-white/60">
-              We&apos;re small on purpose. That means senior people on every
-              project, real accountability, and work you can be proud to put
-              your name on.
+              We&apos;re a small, senior studio that treats your website like
+              it&apos;s our own — focused on the results that actually move your
+              business forward.
             </p>
           </Reveal>
         </div>

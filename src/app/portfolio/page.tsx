@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { PROJECTS, STATS } from "@/lib/data";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { ProjectCard } from "@/components/ui/ProjectCard";
-import { StaggerGroup, StaggerItem, Reveal } from "@/components/ui/Reveal";
+import { CaseStudy } from "@/components/sections/CaseStudy";
+import { Reveal } from "@/components/ui/Reveal";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export const metadata: Metadata = {
@@ -39,15 +39,15 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-20">
         <div className="container-x">
-          <StaggerGroup className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PROJECTS.map((project) => (
-              <StaggerItem key={project.slug} className="h-full">
-                <ProjectCard project={project} />
-              </StaggerItem>
+          <div className="space-y-8 sm:space-y-10">
+            {PROJECTS.map((project, i) => (
+              <Reveal key={project.slug} y={28}>
+                <CaseStudy project={project} index={i} />
+              </Reveal>
             ))}
-          </StaggerGroup>
+          </div>
         </div>
       </section>
 

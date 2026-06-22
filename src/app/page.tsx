@@ -1,10 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
 import { LogoMarquee } from "@/components/sections/LogoMarquee";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
-import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
-import { WhyChoose } from "@/components/sections/WhyChoose";
 import { Process } from "@/components/sections/Process";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { WhyChoose } from "@/components/sections/WhyChoose";
+import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
+import { Pricing } from "@/components/sections/Pricing";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export default function HomePage() {
@@ -13,10 +13,10 @@ export default function HomePage() {
       <Hero />
       <LogoMarquee />
       <ServicesPreview />
-      <PortfolioShowcase />
-      <WhyChoose />
       <Process />
-      <Testimonials />
+      <WhyChoose />
+      <PortfolioShowcase />
+      <Pricing />
       <ContactCTA />
     </>
   );
