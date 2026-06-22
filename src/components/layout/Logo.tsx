@@ -3,12 +3,10 @@ import { cn } from "@/lib/utils";
 /**
  * Codexa brand mark.
  *
- * A solid, geometric monogram: a confident rounded-square tile holding a
- * custom-drawn "C" aperture, with a single accent "cursor" node resting in the
- * opening — a quiet nod to a code editor without any AI-startup cliché.
- *
- * Monochrome by design. The tile/glyph invert on dark surfaces so the mark
- * stays crisp on both the light navbar and the dark footer.
+ * A diamond formed by two angular brackets framing a faceted emblem — a
+ * geometric, monochrome mark with no AI-startup clichés. Rendered as vector so
+ * it stays crisp at any size; the color flips on dark surfaces so the mark
+ * stays legible on both the light navbar and the dark footer.
  */
 export function Mark({
   className,
@@ -17,27 +15,36 @@ export function Mark({
   className?: string;
   dark?: boolean;
 }) {
-  // On light backgrounds: ink tile, paper glyph. On dark: paper tile, ink glyph.
-  const tile = dark ? "#FAFAFB" : "#0B0E16";
-  const glyph = dark ? "#0B0E16" : "#FAFAFB";
+  const c = dark ? "#FAFAFB" : "#0B0E16";
 
   return (
     <svg
-      viewBox="0 0 40 40"
+      viewBox="0 0 100 100"
       className={cn("h-8 w-8", className)}
       role="img"
       aria-label="Codexa"
+      fill="none"
     >
-      <rect width="40" height="40" rx="11" fill={tile} />
+      {/* Diamond brackets */}
       <path
-        d="M22.5 12.6 H17 Q12.5 12.6 12.5 17.4 V22.6 Q12.5 27.4 17 27.4 H22.5"
-        fill="none"
-        stroke={glyph}
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M43 20 L13 50 L43 80"
+        stroke={c}
+        strokeWidth="13"
+        strokeLinejoin="miter"
+        strokeLinecap="butt"
       />
-      <rect x="25.8" y="17" width="6" height="6" rx="1.9" fill="#4D5DFB" />
+      <path
+        d="M57 20 L87 50 L57 80"
+        stroke={c}
+        strokeWidth="13"
+        strokeLinejoin="miter"
+        strokeLinecap="butt"
+      />
+      {/* Faceted emblem */}
+      <path
+        d="M34 62 L34 53 L45 43 L50 47 L55 43 L66 53 L66 62 L57 62 L57 55 L43 55 L43 62 Z"
+        fill={c}
+      />
     </svg>
   );
 }
@@ -54,7 +61,7 @@ export function Logo({
       <Mark dark={dark} />
       <span
         className={cn(
-          "font-display text-lg font-semibold tracking-tight",
+          "font-display text-lg font-semibold uppercase tracking-[0.16em]",
           dark ? "text-white" : "text-ink",
         )}
       >
