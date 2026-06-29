@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Chatbot } from "@/components/ui/Chatbot";
 import { SITE } from "@/lib/utils";
 
 const display = Space_Grotesk({
@@ -93,6 +94,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );

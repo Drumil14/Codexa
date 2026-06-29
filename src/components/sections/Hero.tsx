@@ -16,7 +16,7 @@ const highlights = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-40">
+    <section className="relative overflow-hidden pt-20 sm:pt-24 lg:pt-28">
       {/* Signature blueprint grid + subtle accent wash */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 blueprint mask-fade" />
@@ -75,7 +75,7 @@ export function Hero() {
               href="/portfolio"
               variant="ghost"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full ring-ink/20 hover:ring-ink/30 sm:w-auto"
             >
               View our work
             </Button>

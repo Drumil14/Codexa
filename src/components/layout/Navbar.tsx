@@ -13,6 +13,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hash, setHash] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -20,6 +21,33 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Read hash from URL on route change (cross-page navigation like /about → /#pricing)
+  useEffect(() => {
+    setHash(window.location.hash);
+  }, [pathname]);
+
+  // Scroll-based hash tracking on home page (in-page navigation like clicking Pricing while on /)
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const hashIds = NAV_ITEMS
+      .filter((item) => item.href.startsWith("/#"))
+      .map((item) => item.href.slice(2)); // "/#pricing" → "pricing"
+
+    const check = () => {
+      let found = "";
+      for (const id of hashIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= 100) found = `#${id}`;
+      }
+      setHash(found);
+    };
+
+    window.addEventListener("scroll", check, { passive: true });
+    return () => window.removeEventListener("scroll", check);
+  }, [pathname]);
 
   // Lock body scroll while the mobile menu is open.
   useEffect(() => {
@@ -33,6 +61,18 @@ export function Navbar() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  const handleHashClick = (e: React.MouseEvent, href: string) => {
+    if (!href.startsWith("/#")) return;
+    const id = href.slice(2);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.pushState(null, "", href);
+    setHash(`#${id}`);
+    setOpen(false);
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -57,14 +97,16 @@ export function Navbar() {
           {/* Desktop nav */}
           <ul className="hidden items-center gap-1 md:flex">
             {NAV_ITEMS.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
+              const active = item.href.startsWith("/#")
+                  ? pathname === "/" && hash === item.href.slice(1)
+                  : item.href === "/"
+                  ? pathname === "/" && !hash
                   : pathname.startsWith(item.href);
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    onClick={(e) => handleHashClick(e, item.href)}
                     className={cn(
                       "relative rounded-full px-4 py-2 text-sm transition-colors",
                       active
@@ -129,10 +171,11 @@ export function Navbar() {
               }}
             >
               {NAV_ITEMS.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
+                const active = item.href.startsWith("/#")
+                  ? pathname === "/" && hash === item.href.slice(1)
+                  : item.href === "/"
+                  ? pathname === "/" && !hash
+                  : pathname.startsWith(item.href);
                 return (
                   <motion.li
                     key={item.href}
@@ -143,6 +186,7 @@ export function Navbar() {
                   >
                     <Link
                       href={item.href}
+                      onClick={(e) => { handleHashClick(e, item.href); setOpen(false); }}
                       className={cn(
                         "flex items-center justify-between border-b border-line py-4 text-2xl font-display tracking-tight",
                         active ? "text-ink" : "text-muted",
